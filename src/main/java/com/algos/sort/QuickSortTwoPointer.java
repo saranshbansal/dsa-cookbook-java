@@ -66,7 +66,7 @@ public class QuickSortTwoPointer {
     }
 
     /**
-     * Partitions the array using the FIRST element as pivot (Lomuto-style with first element)
+     * Partitions the array using the FIRST element as pivot (Hoare-style partitioning)
      * 
      * This method uses a two-pointer approach:
      * - Left pointer (i) moves right to find elements >= pivot
@@ -82,7 +82,8 @@ public class QuickSortTwoPointer {
     private int partition(int[] array, int low, int high) {
         // Choose the FIRST element as pivot
         int pivot = array[low];
-        
+        int pivotIndex = low; // even though redundant, it helps in visualising the flow
+
         // Initialize two pointers
         int leftPointer = low;      // Will scan from left to right
         int rightPointer = high;    // Will scan from right to left
@@ -91,7 +92,7 @@ public class QuickSortTwoPointer {
         while (leftPointer < rightPointer) {
             // Move left pointer to skip the pivot element initially
             leftPointer++;
-            
+
             // Move left pointer right until we find an element >= pivot
             // (or reach the end of the range)
             while (leftPointer <= high && array[leftPointer] < pivot) {
@@ -105,14 +106,14 @@ public class QuickSortTwoPointer {
             }
             
             // If pointers haven't crossed and left pointer is valid, swap elements
-            if (leftPointer <= high && leftPointer < rightPointer) {
+            if (leftPointer < rightPointer) {
                 swap(array, leftPointer, rightPointer);
             }
         }
         
         // Place pivot in its correct position by swapping with element at rightPointer
         // At this point, rightPointer points to the last element <= pivot
-        swap(array, low, rightPointer);
+        swap(array, pivotIndex, rightPointer);
         
         // Return the final position of the pivot
         return rightPointer;

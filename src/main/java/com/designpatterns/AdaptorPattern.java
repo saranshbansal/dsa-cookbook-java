@@ -18,7 +18,7 @@ interface MediaPlayer {
      * Plays an audio file of the specified type.
      *
      * @param audioType the type of audio file (mp3, mp4, mov)
-     * @param fileName the name of the file to play
+     * @param fileName  the name of the file to play
      */
     void play(String audioType, String fileName);
 }
@@ -109,7 +109,7 @@ class MediaAdaptor implements MediaPlayer {
 /**
  * Basic audio player that natively supports MP3 files.
  * Uses MediaAdaptor to play other advanced file formats (MP4, MOV).
- *
+ * <p>
  * This demonstrates the Adapter Pattern where the AudioPlayer (client) uses
  * the MediaAdaptor to work with AdvanceMediaPlayer implementations.
  *
@@ -138,7 +138,7 @@ class AudioPlayer implements MediaPlayer {
 
 /**
  * Demonstration class for the Adapter Design Pattern.
- *
+ * <p>
  * The Adapter Pattern allows objects with incompatible interfaces to collaborate.
  * In this example:
  * - AudioPlayer natively plays MP3 files

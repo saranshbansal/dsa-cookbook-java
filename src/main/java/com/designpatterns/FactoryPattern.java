@@ -1,7 +1,17 @@
 package com.designpatterns;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * Factory pattern (C) demo
+ * Factory pattern is creational type design pattern which provides an interface
+ * for creating objects, but allows subclasses to alter the type of objects that
+ * will be created.
+ * <p>
+ * Use when:
+ * 1. Client code doesn't know the exact concrete object it will be working with.
+ * 2. Client code needs to work with different objects without knowing their
+ * specific classes.
+ * 3. Client code needs to be decoupled from object creation process.
  */
 interface Country {
     String getCountryName();
@@ -42,7 +52,7 @@ class Australia implements Country {
 
 }
 
-
+@Slf4j
 public class FactoryPattern {
     public static Country getCurrencyByCountry(String country) throws Exception {
         if ("India".equalsIgnoreCase(country)) {
@@ -60,8 +70,7 @@ public class FactoryPattern {
             System.out.println("Country: " + country.getCountryName());
             System.out.println("Currency: " + country.getSymbol());
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error("Exception occurred:", e);
         }
     }
 }

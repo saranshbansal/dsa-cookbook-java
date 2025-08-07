@@ -57,7 +57,7 @@ public class QuickSortSinglePointer {
     }
 
     /**
-     * Partitions the array around a pivot element (last element in the range)
+     * Partitions the array around a pivot element (Lomuto-style partitioning, using last element in the range)
      * 
      * This method rearranges the array so that:
      * - All elements smaller than or equal to pivot are moved to the left
@@ -71,7 +71,8 @@ public class QuickSortSinglePointer {
      */
     private int partition(int[] arr, int low, int high) {
         // Choose the last element as pivot
-        int pivot = arr[high];
+        int pivotElement = arr[high];
+        int pivoIndex = high; // even though redundant, it helps in visualising the flow
         
         // Index of the smaller element - indicates the right position
         // of pivot found so far
@@ -80,7 +81,7 @@ public class QuickSortSinglePointer {
         // Traverse through all elements except the pivot
         for (int currentIndex = low; currentIndex < high; currentIndex++) {
             // If current element is smaller than or equal to pivot
-            if (arr[currentIndex] <= pivot) {
+            if (arr[currentIndex] <= pivotElement) {
                 // Increment index of smaller element
                 smallerElementIndex++;
                 
@@ -91,7 +92,7 @@ public class QuickSortSinglePointer {
         
         // Place pivot in its correct position by swapping with element
         // at (smallerElementIndex + 1)
-        swap(arr, smallerElementIndex + 1, high);
+        swap(arr, smallerElementIndex + 1, pivoIndex);
         
         // Return the position where pivot is now located
         return smallerElementIndex + 1;
