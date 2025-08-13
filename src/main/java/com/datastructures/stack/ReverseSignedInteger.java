@@ -1,4 +1,4 @@
-package com.datastructures.queue;
+package com.datastructures.stack;
 
 public class ReverseSignedInteger {
     public static void main(String[] args) {
