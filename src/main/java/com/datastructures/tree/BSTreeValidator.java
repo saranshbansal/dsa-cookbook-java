@@ -3,6 +3,8 @@ package com.datastructures.tree;
 /**
  * Check if a given binary tree can represent a Binary Search Tree or not (min and max method)
  *
+ * Inorder traversal check → Values must appear in strictly increasing order.
+ *
  * @author sbansal
  */
 class BSTreeValidator {
@@ -33,9 +35,9 @@ class BSTreeValidator {
         if (root == null) {
             return true;
         }
-        if (root.key < min || root.key > max) {
+        if (root.key <= min || root.key >= max) {
             return false;
         }
-        return isValidBst(root.left, min, root.key - 1) && isValidBst(root.right, root.key + 1, max);
+        return isValidBst(root.left, min, root.key) && isValidBst(root.right, root.key, max);
     }
 }
