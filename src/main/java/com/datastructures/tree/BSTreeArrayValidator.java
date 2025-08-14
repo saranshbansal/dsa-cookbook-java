@@ -1,31 +1,25 @@
 package com.datastructures.tree;
 
-// Java program for an efficient solution to check if
-// a given array can represent Preorder traversal of
-// a Binary Search Tree
-
 import java.util.Stack;
 
-class BinarySearchTreeValidator {
+/**
+ * https://www.geeksforgeeks.org/check-if-a-given-array-can-represent-preorder-traversal-of-binary-search-tree/
+ * <p>
+ * Check if a given array can represent Preorder traversal of Binary Search Tree or not
+ */
+class BSTreeArrayValidator {
 
     public static void main(String[] args) {
-        BinarySearchTreeValidator bst = new BinarySearchTreeValidator();
+        BSTreeArrayValidator bst = new BSTreeArrayValidator();
+
         int[] arr1 = new int[]{40, 30, 35, 80, 100};
-        int n = arr1.length;
-        if (bst.canRepresentBST(arr1, n)) {
-            System.out.println("true");
-        } else {
-            System.out.println("false");
-        }
+        System.out.println(bst.isValidBst(arr1, arr1.length));
+
         int[] arr2 = new int[]{40, 30, 35, 20, 80, 100};
-        if (bst.canRepresentBST(arr2, n)) {
-            System.out.println("true");
-        } else {
-            System.out.println("false");
-        }
+        System.out.println(bst.isValidBst(arr2, arr2.length));
     }
 
-    boolean canRepresentBST(int[] arr, int n) {
+    boolean isValidBst(int[] arr, int n) {
         // Create an empty stack
         Stack<Integer> stack = new Stack<>();
 
